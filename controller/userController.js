@@ -23,6 +23,24 @@ const createUserCtrl = expressAsyncHandler(async (req, res)=>{
 
 })
 
+const loginUserCtrl = expressAsyncHandler(async (req, res)=>{
+
+    const { email, password } = req.body;
+
+    const findUser = await User.findOne({ email });
+
+    if(findUser && await findUser.verifyPassword(password)){
+        
+        res.json({
+
+        })
+        
+    }else{
+        throw new Error('Senha inválida');
+    }
+})
+
 module.exports = {
-    createUserCtrl
+    createUserCtrl,
+    loginUserCtrl
 }

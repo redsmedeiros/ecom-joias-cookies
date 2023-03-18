@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { createUserCtrl } = require('../controller/userController');
+const { createUserCtrl, loginUserCtrl } = require('../controller/userController');
 
 
 //rotas
 router.post('/register', createUserCtrl);
+router.post('/login', loginUserCtrl);
 
 module.exports = router;
